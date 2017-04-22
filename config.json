@@ -1,0 +1,108 @@
+{
+	"classes": [{
+			"name": "pagrindinis",
+			"active": false,
+			"conditions": [
+				"ACTIVE_CENTER"
+			],
+	  		"moves" : [
+			  "FORWARD",
+			  "FORWARD",
+			  "FORWARD",
+			  "FORWARD",
+			  "FORWARD",
+			  "FORWARD"
+			  ]
+		},
+		{
+			"name": "plyta",
+			"active": false,
+			"conditions": [
+				"ACTIVE_CENTER",
+				"PASSIVE_LEFT"
+			],
+	  		"moves" : [
+			  "FORWARD",
+			  "FORWARD",
+			  "FORWARD",
+			  "LEFT",
+			  "LEFT",
+			  "FORWARD",
+			  "FORWARD",
+			  "FORWARD"
+			  ]
+		},
+		{
+			"name": "stop",
+			"active": false,
+			"conditions": [
+				"ACTIVE_CENTER",
+				"PASSIVE_RIGHT"
+			],
+	  		"moves" : [
+			  "FORWARD",
+			  "FORWARD",
+			  "FORWARD",
+			  "RIGHT",
+			  "RIGHT",
+			  "FORWARD",
+			  "FORWARD",
+			  "FORWARD"
+			  ]
+		},
+		{
+			"name": "pereja",
+			"active": false,
+			"conditions": [
+				"ACTIVE_CENTER"
+			],
+	  		"moves" : [
+			  "NONE",
+			  "NONE",
+			  "NONE",
+			  "FORWARD",
+			  "FORWARD",
+			  "FORWARD"
+			  ]
+		},
+		{
+			"name": "sankryza",
+			"active": false,
+			"conditions": [
+				"ACTIVE_CENTER",
+				"PASSIVE_LEFT",
+				"PASSIVE_RIGHT"
+			],
+	  		"moves" : [
+			  "FORWARD",
+			  "FORWARD",
+			  "FORWARD",
+			  "FORWARD",
+			  "FORWARD",
+			  "FORWARD"
+			  ]
+		},
+		{
+			"name": "zmogus",
+			"active": true
+		},
+		{
+			"name": "masina",
+			"active": true
+		}
+	],
+	"moves": {
+		"LEFT": 0,
+		"RIGHT": 1,
+		"FORWARD": 2,
+		"NONE": 3
+	},
+	"zones": {
+		"LEFT": "PASSIVE_LEFT",
+		"CENTER": "ACTIVE_CENTER",
+		"RIGHT": "PASSIVE_RIGHT"
+	},
+	"standard_conditions": [
+		"ACTIVE_CENTER"
+	]
+}
