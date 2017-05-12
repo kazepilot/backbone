@@ -46,6 +46,23 @@ class Network(object):
 
         return index
 
+<<<<<<< HEAD
+=======
+class Detection(object):
+    
+    def __init__(self, json_data, height, width):
+        self.left = int(json_data['left'] * height)
+        self.right = int(json_data['right'] * height)
+        self.top = int(json_data['top'] * width)
+        self.bottom = int(json_data['bottom'] * width)
+        self.name = json_data['name']
+
+    def topD(self):
+        return (self.top, self.left)
+
+    def bottomD(self):
+        return (self.bottom, self.right)
+>>>>>>> b0179825d8e79cf846283a781dc08070ff4450da
 
 def main():
     from robot import Robot
@@ -71,6 +88,9 @@ def main():
     robot.close()
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b0179825d8e79cf846283a781dc08070ff4450da
 if __name__ == '__main__':
     main()

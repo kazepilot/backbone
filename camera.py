@@ -16,9 +16,15 @@ class Camera(object):
         # grab an image from the camera
         self.camera.capture(self.rawCapture, format="bgr")
         img = self.rawCapture.array
+<<<<<<< HEAD
         img = cv2.flip(img, 0)
         img = cv2.flip(img, 1)
         self.rawCapture.truncate(0)
+=======
+	img = cv2.flip(img, 0)
+	img = cv2.flip(img, 1)
+	self.rawCapture.truncate(0)
+>>>>>>> b0179825d8e79cf846283a781dc08070ff4450da
 
 	return img
 
