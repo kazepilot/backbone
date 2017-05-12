@@ -28,12 +28,7 @@ class Backbone(object):
         detections = self.get_detections(frame)
         distances = self.robot.distance()
         move = 3
-<<<<<<< HEAD
-=======
 
-	print self.moves_stack.empty()
-
->>>>>>> b0179825d8e79cf846283a781dc08070ff4450da
         if self.moves_stack.empty():
             self.pre_moves, self.moves_stack, self.additional_conditions = self.get_moves(
                 detections)
@@ -49,13 +44,9 @@ class Backbone(object):
                 return False
             move = self.pre_moves.get(False)
 
-<<<<<<< HEAD
         elif not self.moves_stack.empty():
             if not pass_add_conditions or distances[1] < 0.05:
                 return False
-=======
-        if not self.moves_stack.empty():
->>>>>>> b0179825d8e79cf846283a781dc08070ff4450da
             move = self.moves_stack.get(False)
 
         else:
@@ -67,13 +58,8 @@ class Backbone(object):
             self.robot.right()
         elif move is 2:
             self.robot.forward()
-<<<<<<< HEAD
         else:
             time.sleep(0.5)
-=======
-	else:
-	    time.sleep(0.5)
->>>>>>> b0179825d8e79cf846283a781dc08070ff4450da
 
         return True
 
@@ -93,7 +79,6 @@ class Backbone(object):
 	    if det.probility > 0.3:
                 detections.append(det)
 
-<<<<<<< HEAD
         return detections
 
     def get_moves(self, detections):
@@ -117,33 +102,6 @@ class Backbone(object):
 
     def can_move(self, conditions, detections):
         if detections is None:
-=======
-	return detections
-
-    def get_moves(self, detections):
-	if detections is None or len(detections) < 1:
-            return Queue(), [] 
-        signs = filter(lambda x: not x.active, detections)
-	
-	if len(signs) < 1:
-	    return Queue(), []
-	
-	sign = max(signs, key=lambda x: x.area())
-        moves = self.config.get_moves(sign.name)
-        conditiions = self.config.get_conditions(sign.name)
-
-	final_moves = Queue()
-	distance = int(round(sign.distance())) / 6
-	for i in range(0, distance):
-	    final_moves.put(2)
-	while not moves.empty():
-	    final_moves.put(moves.get())
-
-        return final_moves, conditiions
-
-    def can_move(self, conditions, detections):
-	if detections is None:
->>>>>>> b0179825d8e79cf846283a781dc08070ff4450da
             return True
 
         for condition in conditions:
@@ -159,17 +117,9 @@ class Backbone(object):
 
 
 def main():
-<<<<<<< HEAD
     backbone = Backbone('/home/pi/backbone/data.weights', '/home/pi/backbone/config.json')
     while 'pigs' != 'fly':
         backbone.move()
-=======
-    backbone = Backbone('data.weights', 'config.json')
-    camera = Camera()
-    while 'pigs' != 'fly':
-        frame = camera.capture()
-        backbone.move(frame)
->>>>>>> b0179825d8e79cf846283a781dc08070ff4450da
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 

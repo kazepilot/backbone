@@ -22,8 +22,6 @@ class Robot(object):
         self.MOVEMENT = 150
         self.WAIT = 0.8
 
-<<<<<<< HEAD
-
     def forward(self, centimeters=1):
         distance = self.MOVEMENT
         if distance < 1:
@@ -36,31 +34,13 @@ class Robot(object):
         distance = self.MOVEMENT - 30
         if distance < 1:
             return
-=======
 
-    def forward(self, centimeters=1):
-        distance = self.MOVEMENT
-        if distance < 1:
-            return
-        thread.start_new_thread(self._turnmotor, (self.right_motor, self.SPEED, distance))
-        thread.start_new_thread(self._turnmotor, (self.left_motor, self.SPEED, distance))
-        time.sleep(0.5)
-
-    def backward(self, centimeters=1):
-        distance = self.MOVEMENT - 30
-        if distance < 1:
-            return
->>>>>>> b0179825d8e79cf846283a781dc08070ff4450da
         thread.start_new_thread(self._turnmotor, (self.right_motor, -self.SPEED, distance))
         thread.start_new_thread(self._turnmotor, (self.left_motor, -self.SPEED, distance))
         time.sleep(self.WAIT)
 
     def left(self, angle=1):
-<<<<<<< HEAD
         rotation = self.DEGREES + 15
-=======
-        rotation = self.DEGREES + 30
->>>>>>> b0179825d8e79cf846283a781dc08070ff4450da
         if angle < 1:
             return
         thread.start_new_thread(self._turnmotor, (self.right_motor, self.SPEED, rotation))
@@ -68,11 +48,7 @@ class Robot(object):
         time.sleep(self.WAIT)
 
     def right(self, angle=1):
-<<<<<<< HEAD
         rotation = self.DEGREES - 15
-=======
-        rotation = self.DEGREES
->>>>>>> b0179825d8e79cf846283a781dc08070ff4450da
         if angle < 1:
             return
         thread.start_new_thread(self._turnmotor, (self.right_motor, -self.SPEED, rotation))
@@ -85,19 +61,10 @@ class Robot(object):
         right = self.right_distance.get_sample()
 
         dist = 75.0
-	dist2 = 70.0
 
-        left = (left / dist) if left < dist else 1.0
-        center = (center / dist2) if center < dist2 else 1.0
-        right = (right / dist) if right < dist else 1.0
-
-<<<<<<< HEAD
         left = (left / dist) if left < dist else 1.0
         center = (center / dist) if center < dist else 1.0
         right = (right / dist) if right < dist else 1.0
-=======
-        # time.sleep(self.WAIT)
->>>>>>> b0179825d8e79cf846283a781dc08070ff4450da
 
         return [left, center, right]
 
@@ -109,7 +76,6 @@ class Robot(object):
 
 
 def main():
-<<<<<<< HEAD
     r.left()
     r.left()
     r.left()
@@ -124,25 +90,3 @@ def main():
 if __name__ == '__main__':
     r = Robot()
     main()
-    main()
-    main()
-=======
-    #r.left()
-    #r.left()
-    #r.left()
-    #r.left()
-    r.forward()
-    #r.right()
-    #r.right()
-    #r.right()
-    #r.right()
-    #r.forward()
-
-
-if __name__ == '__main__':
-    r = Robot()
->>>>>>> b0179825d8e79cf846283a781dc08070ff4450da
-    main()
-    #main()
-    #main()
-    #main()

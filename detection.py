@@ -7,11 +7,7 @@ class Detection(object):
         self.bottom = int(json_data['bottom'] * width)
         self.name = json_data['name']
         self.active = active
-<<<<<<< HEAD
         self.probility = json_data['probability']
-=======
-	self.probility = json_data['probability']
->>>>>>> b0179825d8e79cf846283a781dc08070ff4450da
 
         self.zone = zones['CENTER']
 
@@ -42,16 +38,9 @@ class Detection(object):
     def distance(self):
         if self.active:
             return None
-<<<<<<< HEAD
+
         distance = self.area() / -1000.0 + 50
         return distance 
-=======
-        # object that has size of 100px*100px is 5cm away. Using this info we
-        # can estimate how far this object is
-        #return 100000 / self.area() * 5
-	distance = self.area() / -1000.0 + 50
-	return distance 
->>>>>>> b0179825d8e79cf846283a781dc08070ff4450da
 
     def center(self):
         return (self.bottom - self.top, self.right - self.left)
