@@ -7,8 +7,9 @@ class Detection(object):
         self.bottom = int(json_data['bottom'] * width)
         self.name = json_data['name']
         self.active = active
+        self.probility = json_data['probability']
 
-        self.zone = zones['ACTIVE']
+        self.zone = zones['CENTER']
 
         if self.center()[0] > width / 2:
             side = width * 15 / 100
@@ -35,11 +36,26 @@ class Detection(object):
         return self.height() * self.width()
 
     def distance(self):
-        if not self.active:
+        if self.active:
             return None
-        # object that has size of 100px*100px is 5cm away. Using this info we
-        # can estimate how far this object is
-        return 100000 / self.area() * 5
+        distance = self.area() / -1000.0 + 50
+        return distance 
 
     def center(self):
         return (self.bottom - self.top, self.right - self.left)
+
+def main():
+    from camera import Camera
+    from backbone import Backbone
+
+    cam = Camera()
+    bone = Backbone('data.weights', 'config.json')
+
+    while 'pigs' != 'fly':
+        frame = cam.capture()
+        detections = bone.get_detections(frame)
+        for detection in detections:
+            print detection.name, detection.distance()
+
+if __name__ == '__main__':
+    main()

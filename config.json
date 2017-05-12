@@ -23,6 +23,8 @@
 			],
 	  		"moves" : [
 			  "FORWARD",
+			  "FORWARD", 
+			  "FORWARD",
 			  "FORWARD",
 			  "FORWARD",
 			  "LEFT",

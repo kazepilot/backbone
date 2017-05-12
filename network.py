@@ -1,10 +1,9 @@
 import cv2
 import numpy as np
 import math
-import requests
-import json
+#import requests
+#import json
 import time
-
 
 class Neuron(object):
 
@@ -20,7 +19,6 @@ class Neuron(object):
             add += self.weights[i] * x[i]
 
         return max(0.0, add)
-
 
 class Network(object):
 
@@ -47,3 +45,32 @@ class Network(object):
                 index = idx
 
         return index
+
+
+def main():
+    from robot import Robot
+    network = Network('data.weights')
+    robot = Robot()
+
+    while 'pigs' != 'fly':
+        distances = robot.distance()
+        if distances[0] > 0.95 and distances[1] > 0.95 and distances[2] > 0.95:
+	    continue
+        print distances	
+	move = network.move(distances)
+        print move	
+	if move is 0:
+            robot.left()
+            #robot.left()
+        elif move is 1:
+            robot.right()
+            #robot.right()
+        else:
+            robot.forward()
+
+    robot.close()
+
+
+
+if __name__ == '__main__':
+    main()
