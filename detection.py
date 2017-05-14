@@ -11,7 +11,9 @@ class Detection(object):
 
         self.zone = zones['CENTER']
 
-        if self.center()[0] > width / 2:
+        center = [self.bottom - self.top, self.right - self.left]
+
+        if center[0] > width / 2:
             side = width * 15 / 100
             if self.right < side:
                 self.in_active_zone = zones['LEFT']
@@ -20,30 +22,16 @@ class Detection(object):
             if self.left > side:
                 self.in_active_zone = zones['RIGHT']
 
-    def topD(self):
-        return (self.top, self.left)
-
-    def bottomD(self):
-        return (self.bottom, self.right)
-
-    def width(self):
-        return self.right - self.left
-
-    def height(self):
-        return self.bottom - self.top
-
     def area(self):
-        return self.height() * self.width()
+        return (self.bottom - self.top) * (self.right - self.left)
 
     def distance(self):
         if self.active:
             return None
 
         distance = self.area() / -1000.0 + 50
-        return distance 
+        return distance
 
-    def center(self):
-        return (self.bottom - self.top, self.right - self.left)
 
 def main():
     from camera import Camera
